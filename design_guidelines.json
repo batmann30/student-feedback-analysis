@@ -1,0 +1,128 @@
+{
+  "theme": {
+    "colors": {
+      "css_vars": {
+        "--background": "60 20% 97%",
+        "--foreground": "222 47% 11%",
+        "--primary": "222 70% 20%",
+        "--primary-foreground": "0 0% 100%",
+        "--secondary": "45 68% 47%",
+        "--secondary-foreground": "0 0% 100%",
+        "--accent": "45 30% 90%",
+        "--accent-foreground": "222 70% 20%",
+        "--border": "45 30% 85%",
+        "--card": "0 0% 100%",
+        "--card-foreground": "222 47% 11%",
+        "--ring": "45 68% 47%"
+      },
+      "palette_hex": {
+        "navy": "#0F2557",
+        "gold": "#C9A227",
+        "warm_white": "#F9F8F6",
+        "off_white": "#FAFAFA",
+        "navy_dark": "#0A1838",
+        "gold_light": "#D4A017"
+      },
+      "charts": ["#0F2557", "#C9A227", "#4B6584", "#E0C367", "#8D99AE"]
+    },
+    "typography": {
+      "fonts": {
+        "heading": "'Playfair Display', serif",
+        "body": "'Manrope', sans-serif"
+      },
+      "imports": [
+        "@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');"
+      ],
+      "rules": {
+        "h1": "font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary",
+        "h2": "font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold text-primary",
+        "h3": "font-heading text-xl sm:text-2xl font-medium text-primary",
+        "body": "font-body text-base text-foreground leading-relaxed",
+        "label": "font-body text-sm font-semibold tracking-wide uppercase text-primary/80"
+      }
+    }
+  },
+  "images": {
+    "logo": {
+      "url": "https://customer-assets.emergentagent.com/job_835b07a9-a4b4-4d08-9e44-599f48bf122b/artifacts/0ubvr0hm_WhatsApp%20Image%202026-05-01%20at%2015.46.34.jpeg",
+      "usage": "Global header, Admin sidebar top, and anywhere brand identity is required. Keep size constrained (e.g., h-12 w-auto)."
+    },
+    "hero_background": {
+      "url": "https://customer-assets.emergentagent.com/job_835b07a9-a4b4-4d08-9e44-599f48bf122b/artifacts/16xsfuky_WhatsApp%20Image%202026-05-01%20at%2015.46.35.jpeg",
+      "usage": "Landing page hero section background.",
+      "styling": "Absolute positioned, object-cover. CRITICAL: Add overlay `<div className=\\\"absolute inset-0 bg-primary/85 backdrop-blur-[2px]\\\"></div>` to ensure text readability (White and Gold text on top). Do not let the image overpower the UI."
+    },
+    "admin_login_background": {
+      "url": "https://customer-assets.emergentagent.com/job_835b07a9-a4b4-4d08-9e44-599f48bf122b/artifacts/r2d8gahq_WhatsApp%20Image%202026-05-01%20at%2015.45.59.jpeg",
+      "usage": "Admin login page background.",
+      "styling": "Use as full viewport background. Apply heavy blur and overlay: `bg-primary/90 backdrop-blur-md` so the login card pops. The image should feel like a subtle texture rather than a sharp photo."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-full font-body font-semibold transition-all shadow-md hover:shadow-lg",
+      "secondary": "bg-transparent border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-full font-body font-semibold transition-all",
+      "submit": "bg-secondary text-white hover:bg-[#b89423] px-10 py-4 rounded-full font-body font-bold text-lg shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
+    },
+    "cards": {
+      "default": "bg-white border border-border rounded-xl shadow-[0_4px_20px_rgba(15,37,87,0.05)] p-6 md:p-8",
+      "dashboard_widget": "bg-white border border-border rounded-xl shadow-sm hover:shadow-md transition-shadow p-6"
+    },
+    "feedback_wizard": {
+      "layout": "Max-width 3xl container, centered. Use generous spacing (gap-8, p-8).",
+      "step_indicator": {
+        "container": "flex items-center justify-between mb-12 relative",
+        "line": "absolute top-1/2 left-0 w-full h-[2px] bg-border -z-10 -translate-y-1/2",
+        "active_line": "absolute top-1/2 left-0 h-[2px] bg-secondary -z-10 -translate-y-1/2 transition-all duration-300",
+        "step_circle": "w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm bg-white border-2 transition-colors",
+        "step_circle_active": "border-secondary bg-secondary text-white",
+        "step_circle_inactive": "border-border text-primary/40",
+        "step_circle_completed": "border-secondary bg-white text-secondary"
+      },
+      "star_rating": {
+        "container": "flex gap-2 items-center",
+        "star_icon": "w-8 h-8 md:w-10 md:h-10 cursor-pointer transition-transform hover:scale-110",
+        "star_filled": "text-secondary fill-secondary",
+        "star_empty": "text-border fill-transparent",
+        "label": "text-lg font-heading text-primary mt-2"
+      }
+    },
+    "admin_dashboard": {
+      "layout": "Flex layout. Left sidebar (w-64, bg-primary, text-white), Right content area (flex-1, bg-background, p-8).",
+      "sidebar_nav_link": "flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors",
+      "sidebar_nav_link_active": "bg-secondary/20 text-secondary font-medium",
+      "kpi_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8",
+      "charts_grid": "grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8",
+      "table_container": "bg-white border border-border rounded-xl overflow-hidden shadow-sm"
+    }
+  },
+  "layout": {
+    "spacing": "Generous whitespace. Use p-8, p-12 for sections. Tailwind gaps gap-6 or gap-8.",
+    "alignment": "Left-align forms and dense content. Center hero headings.",
+    "dividers": "Use subtle gold hairline dividers (`border-t border-border`) to separate sections."
+  },
+  "motion": {
+    "micro_animations": {
+      "hover_lift": "hover:-translate-y-1 transition-transform duration-200",
+      "entrance": "Use framer-motion for simple fade-in and slide-up (y: 20, opacity: 0 -> y: 0, opacity: 1) on form steps.",
+      "stagger": "Stagger list items in dashboard by 0.1s."
+    }
+  },
+  "testing": {
+    "rules": [
+      "All interactive elements MUST have a `data-testid` attribute.",
+      "Convention: kebab-case, role-based. Example: `data-testid=\"feedback-start-button\"`, `data-testid=\"star-rating-4\"`, `data-testid=\"step-next-button\"`."
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the CSS variables defined in 'theme.colors.css_vars'. Add these to the :root in global CSS.",
+    "Import 'Playfair Display' and 'Manrope' via Google Fonts and configure them in tailwind.config.js as `font-heading` and `font-body`.",
+    "Do NOT use pure white (#FFFFFF) for page backgrounds, use the warm off-white mapped to the background CSS variable.",
+    "For the Feedback Wizard, maintain a clean, distraction-free UI. The cards must have subtle shadows and gold borders.",
+    "Use Shadcn UI components for dropdowns/selects but customize them to match the East West branding (roundness, border colors).",
+    "Admin Dashboard MUST use Recharts. Use the provided 'charts' color palette for data visualization.",
+    "NEVER use placeholder images. ONLY use the 3 provided URLs exactly as instructed.",
+    "Implement the Star Rating component with SVG stars, applying the 'star_filled' and 'star_empty' classes based on state.",
+    "Ensure the hero background image is properly heavily overlaid with navy to maintain AA contrast ratios for the text."
+  ]
+}
