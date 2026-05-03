@@ -45,7 +45,8 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [filters, setFilters] = useState({ course: "all", semester: "all", date_from: "", date_to: "" });
-  const [courses, setCourses] = useState({});
+  const [courses, setCourses] = useState([]);
+  const [courseData, setCourseData] = useState({});
 
   const token = localStorage.getItem("ew_admin_token");
 
@@ -79,7 +80,9 @@ const AdminDashboard = () => {
   const loadCourses = async () => {
     try {
       const { data } = await api.get("/courses");
-      setCourses(data.courses || {});
+      const cData = data?.courses || {};
+      setCourseData(cData);
+      setCourses(Object.keys(cData));
     } catch (e) {
       /* ignore */
     }
@@ -135,11 +138,11 @@ const AdminDashboard = () => {
 
   const allSemesters = useMemo(() => {
     const set = new Set();
-    Object.values(courses).forEach((years) =>
+    Object.values(courseData).forEach((years) =>
       Object.values(years).forEach((sems) => sems.forEach((s) => set.add(s)))
     );
     return Array.from(set).sort();
-  }, [courses]);
+  }, [courseData]);
 
   return (
     <div className="min-h-screen bg-background flex" data-testid="admin-dashboard">
@@ -213,7 +216,7 @@ const AdminDashboard = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All courses</SelectItem>
-                  {Object.keys(courses).map((c) => (
+                  {courses?.map((c) => (
                     <SelectItem key={c} value={c}>
                       {c}
                     </SelectItem>

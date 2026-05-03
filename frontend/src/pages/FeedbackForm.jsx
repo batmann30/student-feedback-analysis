@@ -34,7 +34,8 @@ const FeedbackForm = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const [courses, setCourses] = useState({});
+  const [courseData, setCourseData] = useState({});
+  const [courses, setCourses] = useState([]);
   const [form, setForm] = useState({
     course: "",
     year: "",
@@ -53,7 +54,9 @@ const FeedbackForm = () => {
     (async () => {
       try {
         const { data } = await api.get("/courses");
-        setCourses(data.courses || {});
+        const cData = data?.courses || {};
+        setCourseData(cData);
+        setCourses(Object.keys(cData));
       } catch (e) {
         toast.error(formatApiError(e));
       }
@@ -61,15 +64,15 @@ const FeedbackForm = () => {
   }, []);
 
   const years = useMemo(
-    () => (form.course && courses[form.course] ? Object.keys(courses[form.course]) : []),
-    [form.course, courses]
+    () => (form.course && courseData[form.course] ? Object.keys(courseData[form.course]) : []),
+    [form.course, courseData]
   );
   const sems = useMemo(
     () =>
-      form.course && form.year && courses[form.course]?.[form.year]
-        ? courses[form.course][form.year]
+      form.course && form.year && courseData[form.course]?.[form.year]
+        ? courseData[form.course][form.year]
         : [],
-    [form.course, form.year, courses]
+    [form.course, form.year, courseData]
   );
 
   const loadSubjects = async () => {
@@ -210,7 +213,7 @@ const FeedbackForm = () => {
                         <SelectValue placeholder="Select course" />
                       </SelectTrigger>
                       <SelectContent>
-                        {Object.keys(courses).map((c) => (
+                        {courses?.map((c) => (
                           <SelectItem key={c} value={c} data-testid={`course-opt-${c}`}>
                             {c}
                           </SelectItem>
